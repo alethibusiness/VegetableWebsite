@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh Harvest — Vegetable Market</title>
+  <style>
+    :root {
+      --green: #1a7a3a;
+      --green-dark: #145f2d;
+      --bg: #f6f7f4;
+      --card: #ffffff;
+      --border: #e6e8e0;
+      --text: #1c241b;
+      --muted: #6b7a6e;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+    .logo span { width: 36px; height: 36px; background: var(--green); color: white; display: grid; place-items: center; border-radius: 10px; font-size: 18px; }
+    .nav-links { display: flex; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav-links a { text-decoration: none; color: inherit; }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .cart { background: var(--green); color: white; border: 0; padding: 10px 18px; border-radius: 999px; font-weight: 600; cursor: pointer; }
+    .hero { padding: 36px 0 12px; }
+    .hero h1 { font-size: 32px; letter-spacing: -0.02em; }
+    .hero p { color: var(--muted); margin-top: 6px; max-width: 520px; }
+    .toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0 18px; }
+    .toolbar input, .toolbar select {
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 999px; background: white; font-size: 14px;
+    }
+    .toolbar input { flex: 1; min-width: 200px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+      padding-bottom: 40px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .thumb {
+      height: 160px;
+      background: #f0f5e9;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .body { padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); font-weight: 700; }
+    .name { font-size: 16px; font-weight: 700; }
+    .desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .meta { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 10px; }
+    .price { font-weight: 800; }
+    .price small { font-weight: 500; color: var(--muted); }
+    .add {
+      background: white; color: var(--green); border: 1.5px solid var(--green);
+      padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 13px; cursor: pointer;
+    }
+    .add:hover { background: var(--green); color: white; }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; padding: 18px 0 32px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo"><span>🥬</span> Fresh Harvest</div>
+      <nav class="nav-links">
+        <a class="active" href="#">Vegetables</a>
+        <a href="#">Fruits</a>
+        <a href="#">Bundles</a>
+      </nav>
+      <button class="cart">Cart (0)</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Fresh vegetables, picked daily</h1>
+      <p>Seasonal produce from local farms. Filter, browse, and add to your basket. All prices per bunch or kg as listed.</p>
+      <div class="toolbar">
+        <input type="search" placeholder="Search vegetables, e.g. tomato, spinach..." aria-label="Search vegetables" />
+        <select aria-label="Filter category">
+          <option>All categories</option>
+          <option>Leafy greens</option>
+          <option>Root vegetables</option>
+          <option>Fruit vegetables</option>
+        </select>
+        <select aria-label="Sort">
+          <option>Sort by popularity</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Vegetable listings">
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1592924357228-91a4da028fea?w=400&q=80&auto=format&fit=crop" alt="Tomatoes" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Fruit vegetable</div>
+          <div class="name">Tomatoes</div>
+          <div class="desc">Vine-ripened, juicy and sweet. Great for salads and stews.</div>
+          <div class="meta"><div class="price">$3.50 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80&auto=format&fit=crop" alt="Carrots" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Root</div>
+          <div class="name">Carrots</div>
+          <div class="desc">Crunchy and naturally sweet. Washed and ready to cook.</div>
+          <div class="meta"><div class="price">$2.20 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80&auto=format&fit=crop" alt="Lettuce" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Leafy green</div>
+          <div class="name">Lettuce</div>
+          <div class="desc">Crisp iceberg heads, harvested this morning.</div>
+          <div class="meta"><div class="price">$1.80 <small>/ head</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1459411621452-e6d17f1c5a7f?w=400&q=80&auto=format&fit=crop" alt="Broccoli" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Brassica</div>
+          <div class="name">Broccoli</div>
+          <div class="desc">Tight florets, rich in fiber and vitamin C.</div>
+          <div class="meta"><div class="price">$2.90 <small>/ head</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1449300079320-02e209d9d3a6?w=400&q=80&auto=format&fit=crop" alt="Cucumber" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Fruit vegetable</div>
+          <div class="name">Cucumber</div>
+          <div class="desc">Cool and hydrating. Perfect for fresh salads.</div>
+          <div class="meta"><div class="price">$1.50 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1508747703725-719777637510?w=400&q=80&auto=format&fit=crop" alt="Red Onions" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Bulb</div>
+          <div class="name">Red Onions</div>
+          <div class="desc">Mild and sweet when cooked, sharp when raw.</div>
+          <div class="meta"><div class="price">$2.00 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&q=80&auto=format&fit=crop" alt="Sweet Corn" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Grain vegetable</div>
+          <div class="name">Sweet Corn</div>
+          <div class="desc">Golden cobs, tender and buttery when boiled.</div>
+          <div class="meta"><div class="price">$0.90 <small>/ cob</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1518977678668-d34558922a54?w=400&q=80&auto=format&fit=crop" alt="Potatoes" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Root</div>
+          <div class="name">Potatoes</div>
+          <div class="desc">Floury white potatoes, ideal for mashing and frying.</div>
+          <div class="meta"><div class="price">$1.60 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&q=80&auto=format&fit=crop" alt="Bell Peppers" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Fruit vegetable</div>
+          <div class="name">Bell Peppers</div>
+          <div class="desc">Mix of red, yellow and green. Sweet and crunchy.</div>
+          <div class="meta"><div class="price">$3.20 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1574629810360-214f3774381b?w=400&q=80&auto=format&fit=crop" alt="Eggplant" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Fruit vegetable</div>
+          <div class="name">Eggplant</div>
+          <div class="desc">Glossy and tender, great for grilling and curries.</div>
+          <div class="meta"><div class="price">$2.70 <small>/ kg</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80&auto=format&fit=crop" alt="Spinach" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Leafy green</div>
+          <div class="name">Spinach</div>
+          <div class="desc">Young baby spinach, washed and bunched.</div>
+          <div class="meta"><div class="price">$2.40 <small>/ bunch</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400&q=80&auto=format&fit=crop" alt="Garlic" loading="lazy" /></div>
+        <div class="body">
+          <div class="tag">Bulb</div>
+          <div class="name">Garlic</div>
+          <div class="desc">Aromatic and pungent. Sold as whole bulbs.</div>
+          <div class="meta"><div class="price">$0.60 <small>/ bulb</small></div><button class="add">Add</button></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">Showing 12 vegetables • Fresh Harvest Market • Updated daily</div>
+  </main>
+</body>
+</html>
