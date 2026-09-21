@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vegetable Detail — Fresh Harvest</title>
+  <style>
+    :root { --green:#1a7a3a; --bg:#f6f7f4; --card:#fff; --border:#e6e8e0; --text:#1c241b; --muted:#6b7a6e; --radius:16px; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    header{background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;text-decoration:none;color:inherit}
+    .logo span{width:36px;height:36px;background:var(--green);color:white;display:grid;place-items:center;border-radius:10px;font-size:18px}
+    .back{color:var(--green);text-decoration:none;font-weight:600;font-size:14px}
+    .cart{background:var(--green);color:white;border:0;padding:10px 18px;border-radius:999px;font-weight:600;cursor:pointer}
+    .detail{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;padding:28px 0 40px}
+    @media(max-width:800px){.detail{grid-template-columns:1fr}}
+    .image-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .image-card img{width:100%;height:420px;object-fit:cover;display:block}
+    @media(max-width:800px){.image-card img{height:300px}}
+    .meta-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+    .tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:700}
+    .name{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+    .desc{color:var(--muted);margin-top:8px}
+    .price-row{display:flex;align-items:baseline;gap:10px;margin-top:16px}
+    .price{font-size:26px;font-weight:800}
+    .price small{font-size:14px;color:var(--muted);font-weight:500}
+    .stock{font-size:13px;color:#2a7a3a;background:#e8f5e9;padding:4px 10px;border-radius:999px}
+    .actions{display:flex;gap:12px;margin-top:18px}
+    .qty{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:white}
+    .qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:white;cursor:pointer;font-weight:700}
+    .add{flex:1;background:var(--green);color:white;border:0;padding:12px 18px;border-radius:999px;font-weight:700;cursor:pointer}
+    .add:hover{background:#145f2d}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .info{border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;background:#fcfdf9}
+    .info strong{display:block;font-size:16px}
+    .info span{font-size:12px;color:var(--muted)}
+    .section{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-top:16px}
+    .section h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .section p, .section li{font-size:14px;color:#2b332a}
+    .section ul{padding-left:18px}
+    .not-found{padding:60px 0;text-align:center;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html"><span>🥬</span> Fresh Harvest</a>
+      <a class="back" href="index.html">← Back to listing</a>
+      <button class="cart" onclick="alert('Cart coming soon')">Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <main class="wrap" id="app"></main>
+
+  <script>
+    const vegetables = {
+      tomatoes: { name:"Tomatoes", tag:"Fruit vegetable", price:"$3.50", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1592924357228-91a4da028fea?w=800&q=80&auto=format&fit=crop", desc:"Vine-ripened tomatoes, juicy and sweet. Perfect for salads, stews and fresh sauces.", origin:"Ontario, Canada", harvest:"Picked daily", shelf:"4-5 days chilled", calories:"18 kcal / 100g", protein:"0.9g", carbs:"3.9g", fiber:"1.2g" },
+      carrots: { name:"Carrots", tag:"Root", price:"$2.20", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=800&q=80&auto=format&fit=crop", desc:"Crunchy and naturally sweet carrots, washed and ready to cook. Great raw or roasted.", origin:"British Columbia", harvest:"This week", shelf:"2 weeks chilled", calories:"41 kcal", protein:"0.9g", carbs:"10g", fiber:"2.8g" },
+      lettuce: { name:"Lettuce", tag:"Leafy green", price:"$1.80", unit:"/ head", stock:"In stock", img:"https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&q=80&auto=format&fit=crop", desc:"Crisp iceberg lettuce heads, harvested this morning. Ideal for sandwiches and salads.", origin:"Quebec", harvest:"Today", shelf:"5 days chilled", calories:"15 kcal", protein:"1.4g", carbs:"2.9g", fiber:"1.3g" },
+      broccoli: { name:"Broccoli", tag:"Brassica", price:"$2.90", unit:"/ head", stock:"In stock", img:"https://images.unsplash.com/photo-1459411621452-e6d17f1c5a7f?w=800&q=80&auto=format&fit=crop", desc:"Tight florets rich in fiber and vitamin C. Steam, roast or stir-fry.", origin:"Ontario", harvest:"Yesterday", shelf:"4 days chilled", calories:"34 kcal", protein:"2.8g", carbs:"7g", fiber:"2.6g" },
+      cucumber: { name:"Cucumber", tag:"Fruit vegetable", price:"$1.50", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1449300079320-02e209d9d3a6?w=800&q=80&auto=format&fit=crop", desc:"Cool and hydrating cucumbers, perfect for fresh salads and pickling.", origin:"Ontario", harvest:"Today", shelf:"6 days chilled", calories:"16 kcal", protein:"0.7g", carbs:"3.6g", fiber:"0.5g" },
+      onions: { name:"Red Onions", tag:"Bulb", price:"$2.00", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1508747703725-719777637510?w=800&q=80&auto=format&fit=crop", desc:"Mild and sweet when cooked, sharp when raw. A kitchen staple.", origin:"Manitoba", harvest:"This week", shelf:"3 weeks cool/dry", calories:"40 kcal", protein:"1.1g", carbs:"9g", fiber:"1.7g" },
+      corn: { name:"Sweet Corn", tag:"Grain vegetable", price:"$0.90", unit:"/ cob", stock:"In stock", img:"https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=800&q=80&auto=format&fit=crop", desc:"Golden sweet corn cobs, tender and buttery when boiled or grilled.", origin:"Ontario", harvest:"Today", shelf:"3 days chilled", calories:"96 kcal", protein:"3.4g", carbs:"21g", fiber:"2.4g" },
+      potatoes: { name:"Potatoes", tag:"Root", price:"$1.60", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1518977678668-d34558922a54?w=800&q=80&auto=format&fit=crop", desc:"Floury white potatoes, ideal for mashing, frying and roasting.", origin:"Prince Edward Island", harvest:"This week", shelf:"4 weeks cool/dark", calories:"77 kcal", protein:"2g", carbs:"17g", fiber:"2.2g" },
+      peppers: { name:"Bell Peppers", tag:"Fruit vegetable", price:"$3.20", unit:"/ kg", stock:"Low stock", img:"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=800&q=80&auto=format&fit=crop", desc:"Mix of red, yellow and green bell peppers. Sweet and crunchy.", origin:"British Columbia", harvest:"Yesterday", shelf:"7 days chilled", calories:"31 kcal", protein:"1g", carbs:"6g", fiber:"2.1g" },
+      eggplant: { name:"Eggplant", tag:"Fruit vegetable", price:"$2.70", unit:"/ kg", stock:"In stock", img:"https://images.unsplash.com/photo-1574629810360-214f3774381b?w=800&q=80&auto=format&fit=crop", desc:"Glossy and tender eggplant, great for grilling, curries and ratatouille.", origin:"Ontario", harvest:"Yesterday", shelf:"5 days chilled", calories:"25 kcal", protein:"1g", carbs:"6g", fiber:"3g" },
+      spinach: { name:"Spinach", tag:"Leafy green", price:"$2.40", unit:"/ bunch", stock:"In stock", img:"https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=800&q=80&auto=format&fit=crop", desc:"Young baby spinach, washed and bunched. Perfect for smoothies and sautés.", origin:"Quebec", harvest:"Today", shelf:"3 days chilled", calories:"23 kcal", protein:"2.9g", carbs:"3.6g", fiber:"2.2g" },
+      garlic: { name:"Garlic", tag:"Bulb", price:"$0.60", unit:"/ bulb", stock:"In stock", img:"https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=800&q=80&auto=format&fit=crop", desc:"Aromatic and pungent garlic. Sold as whole bulbs.", origin:"Ontario", harvest:"This week", shelf:"8 weeks cool/dry", calories:"149 kcal", protein:"6.4g", carbs:"33g", fiber:"2.1g" }
+    };
+
+    function getId() {
+      const params = new URLSearchParams(location.search);
+      return (params.get('id') || 'tomatoes').toLowerCase();
+    }
+
+    let qty = 1;
+    let cart = 0;
+    function render() {
+      const id = getId();
+      const v = vegetables[id];
+      const app = document.getElementById('app');
+      if (!v) {
+        app.innerHTML = `<div class="not-found"><h2>Vegetable not found</h2><p>Try <a href="index.html">back to listing</a>. Available ids: ${Object.keys(vegetables).join(', ')}</p></div>`;
+        return;
+      }
+      document.title = v.name + " — Fresh Harvest";
+      app.innerHTML = `
+        <div class="detail">
+          <div class="image-card"><img src="${v.img}" alt="${v.name}" /></div>
+          <div>
+            <div class="meta-card">
+              <div class="tag">${v.tag}</div>
+              <div class="name">${v.name}</div>
+              <p class="desc">${v.desc}</p>
+              <div class="price-row"><div class="price">${v.price} <small>${v.unit}</small></div><span class="stock">${v.stock}</span></div>
+              <div class="actions">
+                <div class="qty"><button onclick="changeQty(-1)" aria-label="Decrease quantity">−</button><span id="qty">1</span><button onclick="changeQty(1)" aria-label="Increase quantity">+</button></div>
+                <button class="add" onclick="addToCart()">Add to cart • ${v.price}</button>
+              </div>
+              <div class="info-grid">
+                <div class="info"><strong>${v.origin}</strong><span>Origin</span></div>
+                <div class="info"><strong>${v.harvest}</strong><span>Harvest</span></div>
+                <div class="info"><strong>${v.shelf}</strong><span>Shelf life</span></div>
+              </div>
+            </div>
+            <div class="section">
+              <h3>Nutrition per 100g</h3>
+              <ul>
+                <li>Calories: ${v.calories}</li>
+                <li>Protein: ${v.protein} • Carbs: ${v.carbs} • Fiber: ${v.fiber}</li>
+                <li>Good source of vitamins A, C and potassium</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>Storage and cooking tips</h3>
+              <p>Store as indicated above. Rinse before use. Roast at 200°C for 20 minutes, steam for 4 minutes, or enjoy raw in salads. Pairs well with olive oil, lemon and fresh herbs.</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    function changeQty(d){
+      qty = Math.max(1, qty + d);
+      const el = document.getElementById('qty');
+      if(el) el.textContent = qty;
+    }
+    function addToCart(){
+      cart += qty;
+      document.getElementById('cartCount').textContent = cart;
+      alert(qty + " × added to cart");
+    }
+    render();
+  </script>
+</body>
+</html>
