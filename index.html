@@ -54,7 +54,8 @@
       gap: 18px;
       padding-bottom: 40px;
     }
-    .card {
+    .card { cursor: pointer; transition: transform .12s, box-shadow .12s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -124,120 +125,120 @@
 
     <section class="grid" aria-label="Vegetable listings">
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1592924357228-91a4da028fea?w=400&q=80&auto=format&fit=crop" alt="Tomatoes" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1592924357228-91a4da028fea?w=400&q=80&auto=format&fit=crop" alt="Tomatoes" onclick="location.href='vegetable.html?id=tomatoes'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Fruit vegetable</div>
-          <div class="name">Tomatoes</div>
+          <a class="name" href="vegetable.html?id=tomatoes" style="text-decoration:none;color:inherit;cursor:pointer">Tomatoes</a>
           <div class="desc">Vine-ripened, juicy and sweet. Great for salads and stews.</div>
           <div class="meta"><div class="price">$3.50 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80&auto=format&fit=crop" alt="Carrots" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80&auto=format&fit=crop" alt="Carrots" onclick="location.href='vegetable.html?id=carrots'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Root</div>
-          <div class="name">Carrots</div>
+          <a class="name" href="vegetable.html?id=carrots" style="text-decoration:none;color:inherit;cursor:pointer">Carrots</a>
           <div class="desc">Crunchy and naturally sweet. Washed and ready to cook.</div>
           <div class="meta"><div class="price">$2.20 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80&auto=format&fit=crop" alt="Lettuce" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80&auto=format&fit=crop" alt="Lettuce" onclick="location.href='vegetable.html?id=lettuce'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Leafy green</div>
-          <div class="name">Lettuce</div>
+          <a class="name" href="vegetable.html?id=lettuce" style="text-decoration:none;color:inherit;cursor:pointer">Lettuce</a>
           <div class="desc">Crisp iceberg heads, harvested this morning.</div>
           <div class="meta"><div class="price">$1.80 <small>/ head</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1459411621452-e6d17f1c5a7f?w=400&q=80&auto=format&fit=crop" alt="Broccoli" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1459411621452-e6d17f1c5a7f?w=400&q=80&auto=format&fit=crop" alt="Broccoli" onclick="location.href='vegetable.html?id=broccoli'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Brassica</div>
-          <div class="name">Broccoli</div>
+          <a class="name" href="vegetable.html?id=broccoli" style="text-decoration:none;color:inherit;cursor:pointer">Broccoli</a>
           <div class="desc">Tight florets, rich in fiber and vitamin C.</div>
           <div class="meta"><div class="price">$2.90 <small>/ head</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1449300079320-02e209d9d3a6?w=400&q=80&auto=format&fit=crop" alt="Cucumber" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1449300079320-02e209d9d3a6?w=400&q=80&auto=format&fit=crop" alt="Cucumber" onclick="location.href='vegetable.html?id=cucumber'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Fruit vegetable</div>
-          <div class="name">Cucumber</div>
+          <a class="name" href="vegetable.html?id=cucumber" style="text-decoration:none;color:inherit;cursor:pointer">Cucumber</a>
           <div class="desc">Cool and hydrating. Perfect for fresh salads.</div>
           <div class="meta"><div class="price">$1.50 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1508747703725-719777637510?w=400&q=80&auto=format&fit=crop" alt="Red Onions" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1508747703725-719777637510?w=400&q=80&auto=format&fit=crop" alt="Red Onions" onclick="location.href='vegetable.html?id=onions'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Bulb</div>
-          <div class="name">Red Onions</div>
+          <a class="name" href="vegetable.html?id=onions" style="text-decoration:none;color:inherit;cursor:pointer">Red Onions</a>
           <div class="desc">Mild and sweet when cooked, sharp when raw.</div>
           <div class="meta"><div class="price">$2.00 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&q=80&auto=format&fit=crop" alt="Sweet Corn" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&q=80&auto=format&fit=crop" alt="Sweet Corn" onclick="location.href='vegetable.html?id=corn'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Grain vegetable</div>
-          <div class="name">Sweet Corn</div>
+          <a class="name" href="vegetable.html?id=corn" style="text-decoration:none;color:inherit;cursor:pointer">Sweet Corn</a>
           <div class="desc">Golden cobs, tender and buttery when boiled.</div>
           <div class="meta"><div class="price">$0.90 <small>/ cob</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1518977678668-d34558922a54?w=400&q=80&auto=format&fit=crop" alt="Potatoes" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1518977678668-d34558922a54?w=400&q=80&auto=format&fit=crop" alt="Potatoes" onclick="location.href='vegetable.html?id=potatoes'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Root</div>
-          <div class="name">Potatoes</div>
+          <a class="name" href="vegetable.html?id=potatoes" style="text-decoration:none;color:inherit;cursor:pointer">Potatoes</a>
           <div class="desc">Floury white potatoes, ideal for mashing and frying.</div>
           <div class="meta"><div class="price">$1.60 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&q=80&auto=format&fit=crop" alt="Bell Peppers" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&q=80&auto=format&fit=crop" alt="Bell Peppers" onclick="location.href='vegetable.html?id=peppers'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Fruit vegetable</div>
-          <div class="name">Bell Peppers</div>
+          <a class="name" href="vegetable.html?id=peppers" style="text-decoration:none;color:inherit;cursor:pointer">Bell Peppers</a>
           <div class="desc">Mix of red, yellow and green. Sweet and crunchy.</div>
           <div class="meta"><div class="price">$3.20 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1574629810360-214f3774381b?w=400&q=80&auto=format&fit=crop" alt="Eggplant" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1574629810360-214f3774381b?w=400&q=80&auto=format&fit=crop" alt="Eggplant" onclick="location.href='vegetable.html?id=eggplant'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Fruit vegetable</div>
-          <div class="name">Eggplant</div>
+          <a class="name" href="vegetable.html?id=eggplant" style="text-decoration:none;color:inherit;cursor:pointer">Eggplant</a>
           <div class="desc">Glossy and tender, great for grilling and curries.</div>
           <div class="meta"><div class="price">$2.70 <small>/ kg</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80&auto=format&fit=crop" alt="Spinach" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80&auto=format&fit=crop" alt="Spinach" onclick="location.href='vegetable.html?id=spinach'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Leafy green</div>
-          <div class="name">Spinach</div>
+          <a class="name" href="vegetable.html?id=spinach" style="text-decoration:none;color:inherit;cursor:pointer">Spinach</a>
           <div class="desc">Young baby spinach, washed and bunched.</div>
           <div class="meta"><div class="price">$2.40 <small>/ bunch</small></div><button class="add">Add</button></div>
         </div>
       </article>
 
       <article class="card">
-        <div class="thumb"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400&q=80&auto=format&fit=crop" alt="Garlic" loading="lazy" /></div>
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400&q=80&auto=format&fit=crop" alt="Garlic" onclick="location.href='vegetable.html?id=garlic'" style="cursor:pointer" loading="lazy" /></div>
         <div class="body">
           <div class="tag">Bulb</div>
-          <div class="name">Garlic</div>
+          <a class="name" href="vegetable.html?id=garlic" style="text-decoration:none;color:inherit;cursor:pointer">Garlic</a>
           <div class="desc">Aromatic and pungent. Sold as whole bulbs.</div>
           <div class="meta"><div class="price">$0.60 <small>/ bulb</small></div><button class="add">Add</button></div>
         </div>
